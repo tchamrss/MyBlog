@@ -25,7 +25,6 @@ Bootstrap5(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
-
 @login_manager.user_loader
 def load_user(user_id):
     return db.get_or_404(User, user_id)
@@ -273,8 +272,6 @@ def contact():
 
 def send_email(name, email, phone, message):
     # email_message = f"Subject:New Message\n\nName: {name}\nEmail: {email}\nPhone: {phone}\nMessage:{message}"
-    print(MY_MAIL_ADDRESS)
-    print(MY_MAIL_APP_PW)
     with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         connection.starttls()
         connection.login(user=MY_MAIL_ADDRESS, password=MY_MAIL_APP_PW)
